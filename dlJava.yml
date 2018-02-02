@@ -1,0 +1,23 @@
+---
+- name: dlJava
+  hosts: all
+  become: true
+  become_method: sudo
+  vars:
+    download_url: http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jdk-8u152-linux-x64
+    download_folder: /opt
+    java_name: "{{download_folder}}/jdk1.8.0_05"
+    java_archive: "jdk-8u152-linux-x64"
+
+
+  tasks:
+  - name: get JDK tarball (as RPM file)
+    get_url:
+      url:     "{{ download_url }}.rpm"
+      headers: 'Cookie:oraclelicense=accept-securebackup-cookie'
+      dest:    "{{ download_folder }}/{{ java_archive }}.rpm"
+
+
+  - name: install JDK via RPM file with yum
+    yum:
+      name: "{{ download_folder }}/{{ java_archive }}.rpm"
