@@ -16,15 +16,12 @@
 
 
   tasks:
-  - name: get Fusion Middleware infrastructure
-    script: wgetFusionMiddleware.sh {{ oracleLogin }} {{ oraclePass }} {{ outputDir }} V886426-01
-    args:
-      creates: "{{ outputDir }}/V886426-01.zip"
 
-  - name: get Oracle Data Integrator
-    script: wgetOracleDataIntegrator.sh {{ oracleLogin }} {{ oraclePass }} {{ outputDir }} V886451-01
+
+  - name: get Oracle JDeveloper
+    script: wgetJDeveloper.sh {{ oracleLogin }} {{ oraclePass }} {{ outputDir }} {{item}}
     args:
-      creates: "{{ outputDir }}/V886451-01{{item}}.zip"
+      creates: "{{ outputDir }}/{{item}}.zip"
     with_items:
-    - _1of2
-    - _2of2
+    - V840994-01_1of2
+    - V840994-01_2of2

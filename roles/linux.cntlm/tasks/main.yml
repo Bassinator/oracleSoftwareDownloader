@@ -1,0 +1,11 @@
+- name: restart cntlm service
+  service:
+    name: 'cntlm'
+    state: started
+
+
+- name: set http proxy for yum
+  lineinfile:
+    path: /etc/yum.conf
+    regexp: '^proxy='
+    line: 'proxy=http://localhost:3128'

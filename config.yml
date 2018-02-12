@@ -1,0 +1,9 @@
+---
+vars:
+  use: corp
+  corp:
+    download_dir: 'C:\Users\EX3NS\Downloads'
+    proxy: True
+  open:
+    download_dir: '~/downloads'
+    Proxy: False
